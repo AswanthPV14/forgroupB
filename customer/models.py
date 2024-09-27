@@ -1,47 +1,3 @@
-"""from django.db import models
-
-# Create your models here.
-# Create your models here.
-from django.contrib.auth.models import AbstractUser,Permission,Group
-from django.db import models
-from django.utils import timezone
-import random
-import string
-
-class User(AbstractUser):
-    is_customer = models.BooleanField(default=False)
-    is_service_provider = models.BooleanField(default=False)
-
-    email = models.EmailField(unique=True)
-    username = None  # Remove username field
-
-    # Any other fields common to both roles
-    phone_number = models.CharField(max_length=15)
-    is_verified = models.BooleanField(default=False)
-    
-    groups = models.ManyToManyField(
-        Group,
-        related_name='app1_user_groups',  # Add a unique related_name
-        blank=True,
-        help_text='The groups this user belongs to.',
-        verbose_name='groups',
-    )
-
-    # Override user_permissions field with a unique related_name
-    user_permissions = models.ManyToManyField(
-        Permission,
-        verbose_name='user permissions',
-        blank=True,
-        related_name='app1_user_permissions'  # Add a unique related_name
-    )
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []  
-
-    def __str__(self):
-        return self.username  """
-
-
 import re
 from django.contrib.auth.models import Permission,Group
 from django.db import models
@@ -77,6 +33,7 @@ class Country_Codes(models.Model):
     
     class Meta:
         ordering = ['calling_code']
+
 
 class State(models.Model):
     name = models.CharField(max_length=255)
